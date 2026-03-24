@@ -1,4 +1,4 @@
-import { getMetadata } from '../../scripts/aem.js';
+import { getMetadata, decorateIcons } from '../../scripts/aem.js';
 import { loadFragment } from '../fragment/fragment.js';
 
 // media query match that indicates mobile/tablet width
@@ -9,6 +9,15 @@ function closeOnEscape(e) {
     const nav = document.getElementById('nav');
     const navSections = nav.querySelector('.nav-sections');
     if (!navSections) return;
+
+    // close search overlay first if open
+    const overlay = document.querySelector('.search-overlay');
+    if (overlay && overlay.classList.contains('search-overlay-open')) {
+      // eslint-disable-next-line no-use-before-define
+      toggleSearchOverlay(false);
+      return;
+    }
+
     const navSectionExpanded = navSections.querySelector('[aria-expanded="true"]');
     if (navSectionExpanded && isDesktop.matches) {
       // eslint-disable-next-line no-use-before-define
@@ -109,6 +118,55 @@ function toggleMenu(nav, navSections, forceExpanded = null) {
 }
 
 /**
+ * Toggles the search overlay open/closed
+ * @param {Boolean} open Whether to open or close the overlay
+ */
+function toggleSearchOverlay(open) {
+  const overlay = document.querySelector('.search-overlay');
+  if (!overlay) return;
+  if (open) {
+    overlay.classList.add('search-overlay-open');
+    overlay.setAttribute('aria-hidden', 'false');
+    document.body.style.overflowY = 'hidden';
+    const input = overlay.querySelector('.search-overlay-input');
+    if (input) input.focus();
+  } else {
+    overlay.classList.remove('search-overlay-open');
+    overlay.setAttribute('aria-hidden', 'true');
+    document.body.style.overflowY = '';
+  }
+}
+
+/**
+ * Creates the search overlay element
+ * @returns {Element} The search overlay element
+ */
+function createSearchOverlay() {
+  const overlay = document.createElement('div');
+  overlay.className = 'search-overlay';
+  overlay.setAttribute('aria-hidden', 'true');
+  overlay.innerHTML = `
+    <div class="search-overlay-content">
+      <form class="search-overlay-form" action="/ae/search/search-all" method="get">
+        <input type="search" class="search-overlay-input" placeholder="What are you looking for?" aria-label="Search" name="search" autocomplete="off" />
+        <button type="button" class="search-overlay-close" aria-label="Close search">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </form>
+    </div>`;
+  overlay.querySelector('.search-overlay-close').addEventListener('click', () => {
+    toggleSearchOverlay(false);
+  });
+  overlay.addEventListener('click', (e) => {
+    if (e.target === overlay) toggleSearchOverlay(false);
+  });
+  return overlay;
+}
+
+/**
  * loads and decorates the header, mainly the nav
  * @param {Element} block The header block element
  */
@@ -159,6 +217,22 @@ export default async function decorate(block) {
     });
   }
 
+  // transform search link into a button that opens overlay
+  const navTools = nav.querySelector('.nav-tools');
+  if (navTools) {
+    const searchLink = navTools.querySelector('a');
+    if (searchLink) {
+      const searchBtn = document.createElement('button');
+      searchBtn.type = 'button';
+      searchBtn.className = 'nav-search-btn';
+      searchBtn.setAttribute('aria-label', 'Open search');
+      searchBtn.innerHTML = '<span class="icon icon-search"></span>';
+      searchLink.replaceWith(searchBtn);
+      await decorateIcons(navTools);
+      searchBtn.addEventListener('click', () => toggleSearchOverlay(true));
+    }
+  }
+
   // hamburger for mobile
   const hamburger = document.createElement('div');
   hamburger.classList.add('nav-hamburger');
@@ -176,4 +250,9 @@ export default async function decorate(block) {
   navWrapper.className = 'nav-wrapper';
   navWrapper.append(nav);
   block.append(navWrapper);
+
+  // add search overlay to the page
+  const searchOverlay = createSearchOverlay();
+  document.body.append(searchOverlay);
+  window.addEventListener('keydown', closeOnEscape);
 }
