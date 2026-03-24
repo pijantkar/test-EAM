@@ -4,6 +4,7 @@ header .nav-wrapper {
   width: 100%;
   z-index: 2;
   position: fixed;
+  border-bottom: 1px solid #e0e0e0;
 }
 
 header nav {
@@ -269,4 +270,113 @@ header nav .nav-sections ul > li > ul > li {
 /* tools */
 header nav .nav-tools {
   grid-area: tools;
+}
+
+/* search button */
+header nav .nav-search-btn {
+  background: none;
+  border: 0;
+  padding: 4px;
+  cursor: pointer;
+  color: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+header nav .nav-search-btn .icon {
+  display: flex;
+  width: 24px;
+  height: 24px;
+}
+
+header nav .nav-search-btn .icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+header nav .nav-search-btn:hover {
+  color: #a50034;
+}
+
+/* search overlay */
+.search-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background-color: rgb(255 255 255 / 97%);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 120px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.search-overlay.search-overlay-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.search-overlay-content {
+  width: 100%;
+  max-width: 720px;
+  padding: 0 24px;
+}
+
+.search-overlay-form {
+  display: flex;
+  align-items: center;
+  border-bottom: 2px solid #333;
+  padding-bottom: 8px;
+  gap: 16px;
+}
+
+.search-overlay-input {
+  flex: 1;
+  border: 0;
+  outline: none;
+  font-size: 28px;
+  font-family: var(--body-font-family);
+  font-weight: 300;
+  background: transparent;
+  color: #333;
+  padding: 8px 0;
+}
+
+.search-overlay-input::placeholder {
+  color: #999;
+}
+
+.search-overlay-close {
+  background: none;
+  border: 0;
+  cursor: pointer;
+  padding: 8px;
+  color: #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.search-overlay-close:hover {
+  color: #a50034;
+}
+
+@media (width >= 600px) {
+  .search-overlay-input {
+    font-size: 36px;
+  }
+}
+
+@media (width >= 900px) {
+  .search-overlay {
+    padding-top: 160px;
+  }
+
+  .search-overlay-input {
+    font-size: 42px;
+  }
 }
