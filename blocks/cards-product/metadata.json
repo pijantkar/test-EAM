@@ -1,0 +1,40 @@
+{
+  "variantName": "cards-product",
+  "baseBlock": "cards",
+  "version": "1.0.0",
+  "created": "2026-03-24T09:20:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://www.lg.com/ru/monitor-buying-guide",
+    "originPage": "monitor buying guide product listing",
+    "blockPosition": "middle"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "compact",
+    "purpose": "product",
+    "imagePattern": "large",
+    "structure": "image + product name + SKU + CTA"
+  },
+  "contentPattern": {
+    "structure": "image + product name + SKU + CTA button",
+    "buttonCount": 1,
+    "imageCount": 1
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "product listing pages",
+      "product recommendation grids",
+      "monitor/electronics product catalogs"
+    ],
+    "notSuitableFor": [
+      "article or blog cards",
+      "team member listings",
+      "feature highlight grids"
+    ]
+  },
+  "usage": {
+    "pagesUsing": ["/ae/monitor-buying-guide"],
+    "reuseCount": 1,
+    "lastUsed": "2026-03-24T09:20:00.000Z"
+  }
+}

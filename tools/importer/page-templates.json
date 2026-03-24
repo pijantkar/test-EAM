@@ -1,0 +1,196 @@
+{
+  "templates": [
+    {
+      "name": "helpful-guide",
+      "urls": [
+        "https://www.lg.com/ae/lg-story/helpful-guide/best-gaming-monitor-for-2022/index"
+      ],
+      "description": "LG Story helpful guide article pages with product advice, how-tos, and buying guides",
+      "blocks": [
+        {
+          "name": "cards",
+          "instances": [
+            ".more-items-block .entry-container",
+            ".promos-wrapper .impulse-promo"
+          ]
+        }
+      ],
+      "sections": [
+        {
+          "id": "section-1",
+          "name": "Article Header",
+          "selector": ".page-header",
+          "style": null,
+          "blocks": [],
+          "defaultContent": [
+            ".page-title",
+            ".details"
+          ]
+        },
+        {
+          "id": "section-2",
+          "name": "Article Body",
+          "selector": ".main-content .module-editable-content:first-child .inner",
+          "style": null,
+          "blocks": [],
+          "defaultContent": [
+            ".image-wrapper img",
+            ".editable-content h2",
+            ".editable-content h3",
+            ".editable-content p"
+          ]
+        },
+        {
+          "id": "section-3",
+          "name": "Related Articles",
+          "selector": ".more-items-block",
+          "style": null,
+          "blocks": [
+            "cards"
+          ],
+          "defaultContent": [
+            "h3"
+          ]
+        },
+        {
+          "id": "section-4",
+          "name": "Featured Products",
+          "selector": ".sidebar .promos-wrapper",
+          "style": null,
+          "blocks": [
+            "cards"
+          ],
+          "defaultContent": [
+            ".promos-wrapper-title"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "news-article",
+      "urls": [
+        "https://www.lg.com/ae/lg-story/news/lg-at-ces-2026/index"
+      ],
+      "description": "LG Story news and press release pages with announcements and event coverage",
+      "blocks": [
+        {
+          "name": "cards",
+          "instances": [
+            ".more-items-block .entry-container",
+            ".promos-wrapper .impulse-promo"
+          ]
+        }
+      ],
+      "sections": [
+        {
+          "id": "section-1",
+          "name": "Article Header",
+          "selector": ".page-header",
+          "style": null,
+          "blocks": [],
+          "defaultContent": [
+            ".page-title",
+            ".details"
+          ]
+        },
+        {
+          "id": "section-2",
+          "name": "Article Body",
+          "selector": [
+            ".main-content .module-editable-content:first-child .inner",
+            ".main-content .module-editable-content .inner"
+          ],
+          "style": null,
+          "blocks": [],
+          "defaultContent": [
+            ".image-wrapper img",
+            ".editable-content h2",
+            ".editable-content p"
+          ]
+        },
+        {
+          "id": "section-3",
+          "name": "Related Articles",
+          "selector": ".more-items-block",
+          "style": null,
+          "blocks": [
+            "cards"
+          ],
+          "defaultContent": [
+            "h3"
+          ]
+        },
+        {
+          "id": "section-4",
+          "name": "Featured Products",
+          "selector": ".sidebar .promos-wrapper",
+          "style": null,
+          "blocks": [
+            "cards"
+          ],
+          "defaultContent": [
+            ".promos-wrapper-title"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "brand-page",
+      "urls": [
+        "https://www.lg.com/ae/better-life/index"
+      ],
+      "description": "Brand marketing microsite pages showcasing LG lifestyle and product ecosystems",
+      "blocks": []
+    },
+    {
+      "name": "monitor-buying-guide",
+      "urls": [
+        "https://www.lg.com/ru/monitor-buying-guide"
+      ],
+      "description": "Monitor buying guide page with product recommendations and comparison information",
+      "blocks": [
+        {
+          "name": "cards-product",
+          "instances": [
+            "#resultCurProductList"
+          ]
+        }
+      ],
+      "sections": [
+        {
+          "id": "section-1",
+          "name": "Page Title",
+          "selector": ".title-wrap",
+          "style": null,
+          "blocks": [],
+          "defaultContent": [
+            ".title-wrap h1"
+          ]
+        },
+        {
+          "id": "section-2",
+          "name": "Interactive Quiz/Configurator",
+          "selector": ".step.step1",
+          "style": null,
+          "blocks": [],
+          "defaultContent": [
+            ".step.step1 .message",
+            ".step.step1 .list-box"
+          ]
+        },
+        {
+          "id": "section-3",
+          "name": "Product Recommendations",
+          "selector": "#result-box-aria",
+          "style": null,
+          "blocks": [
+            "cards-product"
+          ],
+          "defaultContent": [
+            ".result-curation-head"
+          ]
+        }
+      ]
+    }
+  ]
+}

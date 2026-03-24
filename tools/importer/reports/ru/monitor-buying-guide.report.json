@@ -1,0 +1,11 @@
+{
+  "status": "success",
+  "url": "https://www.lg.com/ru/monitor-buying-guide",
+  "path": "ru/monitor-buying-guide",
+  "timestamp": "2026-03-24T12:27:37.854Z",
+  "title": "Руководство для мониторов LG | LG Россия Business",
+  "template": "monitor-buying-guide",
+  "blocks": [
+    "cards-product"
+  ]
+}
