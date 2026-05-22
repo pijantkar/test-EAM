@@ -1,5 +1,7 @@
 {
   "type": "da",
   "libraryUrl": "https://main--sta-boilerplate--aemdemos.aem.page/tools/sidekick/library.json",
-  "contentHostUrl": "https://content.da.live/pijantkar/test-eam/"
+  "contentHostUrl": "https://content.da.live/pijantkar/test-eam/",
+  "previewOrg": "pijantkar",
+  "previewSite": "test-eam"
 }
