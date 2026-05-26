@@ -93,6 +93,37 @@ function toggleMenu(nav, navSections, forceExpanded = null) {
   }
 }
 
+function toggleSearchOverlay(nav) {
+  let overlay = nav.querySelector('.nav-search-overlay');
+  if (!overlay) {
+    overlay = document.createElement('div');
+    overlay.className = 'nav-search-overlay';
+    overlay.innerHTML = `
+      <div class="nav-search-inner">
+        <form action="/ae/search/search-all" method="get" class="nav-search-form">
+          <input type="search" name="q" placeholder="Search LG products, support, and more..." aria-label="Search" autocomplete="off">
+          <button type="submit" aria-label="Submit search">
+            <span class="icon icon-search"><img src="/icons/search.svg" alt="" width="24" height="24"></span>
+          </button>
+        </form>
+        <button type="button" class="nav-search-close" aria-label="Close search">
+          <span>&times;</span>
+        </button>
+      </div>`;
+    overlay.querySelector('.nav-search-close').addEventListener('click', () => {
+      overlay.classList.remove('active');
+    });
+    overlay.addEventListener('keydown', (e) => {
+      if (e.code === 'Escape') overlay.classList.remove('active');
+    });
+    nav.closest('.nav-wrapper').appendChild(overlay);
+  }
+  overlay.classList.toggle('active');
+  if (overlay.classList.contains('active')) {
+    overlay.querySelector('input').focus();
+  }
+}
+
 export default async function decorate(block) {
   const navMeta = getMetadata('nav');
   const navPath = navMeta ? new URL(navMeta, window.location).pathname : '/nav';
@@ -160,6 +191,17 @@ export default async function decorate(block) {
 
   const navTools = nav.querySelector('.nav-tools');
   if (navTools) {
+    const searchLink = navTools.querySelector('a[href*="search"]');
+    if (searchLink) {
+      const searchBtn = document.createElement('button');
+      searchBtn.type = 'button';
+      searchBtn.setAttribute('aria-label', 'Search');
+      searchBtn.innerHTML = searchLink.querySelector('.icon') ? searchLink.querySelector('.icon').outerHTML : '';
+      searchBtn.addEventListener('click', () => {
+        toggleSearchOverlay(nav);
+      });
+      searchLink.replaceWith(searchBtn);
+    }
     navTools.querySelectorAll('a').forEach((link) => {
       const textNode = link.childNodes[link.childNodes.length - 1];
       if (textNode && textNode.nodeType === Node.TEXT_NODE && textNode.textContent.trim()) {
