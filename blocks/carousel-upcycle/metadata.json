@@ -1,0 +1,40 @@
+{
+  "variantName": "carousel-upcycle",
+  "baseBlock": "carousel",
+  "version": "1.0.0",
+  "created": "2026-05-26T10:53:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://www.lg.com/ae/better-life/index",
+    "originPage": "Better Life campaign landing page",
+    "blockPosition": "middle"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "spacious",
+    "purpose": "content-carousel",
+    "imagePattern": "large",
+    "structure": "image + heading + optional description per slide"
+  },
+  "contentPattern": {
+    "structure": "3 slides with image + heading + text",
+    "buttonCount": 0,
+    "imageCount": 3
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "lifestyle/campaign content carousels",
+      "storytelling slide decks with large images",
+      "educational content with step-by-step visuals"
+    ],
+    "notSuitableFor": [
+      "product image galleries without text",
+      "banner/hero rotating promotions",
+      "testimonial sliders"
+    ]
+  },
+  "usage": {
+    "pagesUsing": ["/ae/better-life/index"],
+    "reuseCount": 1,
+    "lastUsed": "2026-05-26T10:53:00.000Z"
+  }
+}

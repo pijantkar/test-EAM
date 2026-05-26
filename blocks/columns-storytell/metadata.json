@@ -1,0 +1,40 @@
+{
+  "variantName": "columns-storytell",
+  "baseBlock": "columns",
+  "version": "1.0.0",
+  "created": "2026-05-26T10:53:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://www.lg.com/ae/better-life/index",
+    "originPage": "Better Life campaign landing page",
+    "blockPosition": "middle"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "spacious",
+    "purpose": "storytelling",
+    "imagePattern": "large",
+    "structure": "text content + image side-by-side"
+  },
+  "contentPattern": {
+    "structure": "heading + paragraph + image",
+    "buttonCount": 0,
+    "imageCount": 1
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "storytelling sections with text and imagery",
+      "brand narrative content with supporting visuals",
+      "expandable content reveals with image"
+    ],
+    "notSuitableFor": [
+      "product comparison layouts",
+      "multi-column data layouts",
+      "feature grids with icons"
+    ]
+  },
+  "usage": {
+    "pagesUsing": ["/ae/better-life/index"],
+    "reuseCount": 1,
+    "lastUsed": "2026-05-26T10:53:00.000Z"
+  }
+}

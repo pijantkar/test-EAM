@@ -1,0 +1,40 @@
+{
+  "variantName": "columns-feature",
+  "baseBlock": "columns",
+  "version": "1.0.0",
+  "created": "2026-05-26T10:53:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://www.lg.com/ae/better-life/index",
+    "originPage": "Better Life campaign landing page",
+    "blockPosition": "middle"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "spacious",
+    "purpose": "feature-highlight",
+    "imagePattern": "large",
+    "structure": "video/media + feature descriptions"
+  },
+  "contentPattern": {
+    "structure": "video + multiple heading/description pairs",
+    "buttonCount": 0,
+    "imageCount": 0
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "product feature highlight sections with video",
+      "technology explainer sections with media",
+      "split content with video demonstrations"
+    ],
+    "notSuitableFor": [
+      "image-only comparison layouts",
+      "text-only multi-column content",
+      "card grid layouts"
+    ]
+  },
+  "usage": {
+    "pagesUsing": ["/ae/better-life/index"],
+    "reuseCount": 1,
+    "lastUsed": "2026-05-26T10:53:00.000Z"
+  }
+}

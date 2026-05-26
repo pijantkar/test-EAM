@@ -2,59 +2,66 @@
 /* global WebImporter */
 
 /**
- * Parser for cards-product variant.
- * Base: cards. Source: https://www.lg.com/ru/monitor-buying-guide
- * Extracts product grid items from #resultCurProductList into cards block rows.
- * Each card row: [product image, product name (bold) + SKU + Where to Buy CTA]
- * Generated: 2026-03-24
+ * Parser for cards-product
+ * Base block: cards
+ * Source: https://www.lg.com/ae/better-life/index
+ * Selectors: .product-list, #resultCurProductList
+ * Generated: 2026-05-26
+ *
+ * Extracts product cards from a product listing container.
+ * Each product has an image, name/SKU, and CTA buttons.
+ * Target structure: two-column rows (image | content with name, description, CTAs)
  */
 export default function parse(element, { document }) {
+  // Find all product items within the container
+  const productItems = element.querySelectorAll('.product-list__item .product__item, .product__item, [class*="product-item"]');
+
   const cells = [];
 
-  // Each product is inside .list-box li .item
-  const items = element.querySelectorAll('.list-box li .item, .list-box li .item.js-model');
+  productItems.forEach((item) => {
+    // Extract product image
+    const img = item.querySelector('.product__img img, img');
 
-  items.forEach((item) => {
-    // Cell 1: Product image from a.visual > img.pc
-    const img = item.querySelector('a.visual img.pc, a.visual img.lazyloaded, a.visual img');
+    // Extract product name
+    const productName = item.querySelector('.product__name, [class*="product-name"], [class*="product__title"]');
 
-    // Cell 2: Text content - product name, SKU, Where to Buy CTA
+    // Extract product SKU/model number as description
+    const productSku = item.querySelector('.product__sn, [class*="product__sn"], [class*="model-number"]');
+
+    // Extract CTA links (prefer .hacm__button container, fallback to btn-class anchors)
+    const ctaContainer = item.querySelector('.hacm__button');
+    const ctaLinks = ctaContainer
+      ? Array.from(ctaContainer.querySelectorAll('a'))
+      : Array.from(item.querySelectorAll('a[class*="btn"]'));
+
+    // Build the image cell
+    const imageCell = [];
+    if (img) {
+      imageCell.push(img);
+    }
+
+    // Build the content cell: product name (bold), SKU/description, CTAs
     const contentCell = [];
-
-    // Product name as bold text
-    const modelNameLink = item.querySelector('.model-name a, p.model-name a');
-    if (modelNameLink) {
-      const p = document.createElement('p');
+    if (productName) {
       const strong = document.createElement('strong');
-      strong.textContent = modelNameLink.textContent.trim();
-      p.appendChild(strong);
-      contentCell.push(p);
+      strong.textContent = productName.textContent.trim();
+      contentCell.push(strong);
+    }
+    if (productSku) {
+      const skuPara = document.createElement('p');
+      skuPara.textContent = productSku.textContent.trim();
+      contentCell.push(skuPara);
+    }
+    if (ctaLinks.length > 0) {
+      contentCell.push(...ctaLinks);
     }
 
-    // SKU as description
-    const skuLink = item.querySelector('.sku a');
-    if (skuLink) {
-      const p = document.createElement('p');
-      p.textContent = skuLink.textContent.trim();
-      contentCell.push(p);
-    }
-
-    // Where to Buy CTA link
-    const wtbLink = item.querySelector('a.where-to-buy');
-    if (wtbLink) {
-      const a = document.createElement('a');
-      a.href = wtbLink.href;
-      a.textContent = wtbLink.textContent.trim();
-      contentCell.push(a);
-    }
-
-    if (img || contentCell.length > 0) {
-      cells.push([img || '', contentCell.length > 0 ? contentCell : '']);
+    // Only add row if we have meaningful content
+    if (imageCell.length > 0 || contentCell.length > 0) {
+      cells.push([imageCell, contentCell]);
     }
   });
 
-  if (cells.length > 0) {
-    const block = WebImporter.Blocks.createBlock(document, { name: 'cards-product', cells });
-    element.replaceWith(block);
-  }
+  const block = WebImporter.Blocks.createBlock(document, { name: 'cards-product', cells });
+  element.replaceWith(block);
 }

@@ -1,0 +1,40 @@
+{
+  "variantName": "cards-story",
+  "baseBlock": "cards",
+  "version": "1.0.0",
+  "created": "2026-05-26T10:53:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://www.lg.com/ae/better-life/index",
+    "originPage": "Better Life campaign landing page",
+    "blockPosition": "bottom"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "spacious",
+    "purpose": "story-card",
+    "imagePattern": "large",
+    "structure": "wide image + name + description + CTA"
+  },
+  "contentPattern": {
+    "structure": "wide image + character name + short description + learn more CTA",
+    "buttonCount": 1,
+    "imageCount": 1
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "related stories/articles with featured imagery",
+      "character/persona profile cards",
+      "cross-promotion cards linking to other campaign pages"
+    ],
+    "notSuitableFor": [
+      "product listing cards",
+      "small icon-based feature grids",
+      "text-only benefit cards"
+    ]
+  },
+  "usage": {
+    "pagesUsing": ["/ae/better-life/index"],
+    "reuseCount": 1,
+    "lastUsed": "2026-05-26T10:53:00.000Z"
+  }
+}

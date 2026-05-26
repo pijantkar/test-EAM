@@ -1,0 +1,40 @@
+{
+  "variantName": "cards-benefit",
+  "baseBlock": "cards",
+  "version": "1.0.0",
+  "created": "2026-05-26T10:53:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://www.lg.com/ae/better-life/index",
+    "originPage": "Better Life campaign landing page",
+    "blockPosition": "bottom"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "compact",
+    "purpose": "benefit",
+    "imagePattern": "noimg",
+    "structure": "title + description (no images)"
+  },
+  "contentPattern": {
+    "structure": "3 items with title + short description, no images",
+    "buttonCount": 0,
+    "imageCount": 0
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "membership benefit listings",
+      "feature highlight cards without images",
+      "value proposition grids"
+    ],
+    "notSuitableFor": [
+      "product cards with images",
+      "article/blog post cards",
+      "team member profiles"
+    ]
+  },
+  "usage": {
+    "pagesUsing": ["/ae/better-life/index"],
+    "reuseCount": 1,
+    "lastUsed": "2026-05-26T10:53:00.000Z"
+  }
+}

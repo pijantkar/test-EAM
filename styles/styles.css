@@ -323,6 +323,56 @@ main > .section:first-of-type {
   }
 }
 
+/* breadcrumb */
+main > .section:first-of-type > .default-content-wrapper > ul:first-child:has(a[href]) {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  list-style: none;
+  margin: 0 -24px;
+  padding: 10px 24px;
+  background-color: #e6e1d6;
+  border-bottom: 1px solid #cbc8c2;
+  font-size: 12px;
+  line-height: 24px;
+  color: #000;
+}
+
+@media (width >= 900px) {
+  main > .section:first-of-type > .default-content-wrapper > ul:first-child:has(a[href]) {
+    margin: 0 -32px;
+    padding: 10px 32px;
+  }
+}
+
+main > .section:first-of-type > .default-content-wrapper > ul:first-child:has(a[href]) li {
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+}
+
+main > .section:first-of-type > .default-content-wrapper > ul:first-child:has(a[href]) li + li::before {
+  content: '>';
+  margin: 0 4px;
+  color: #000;
+}
+
+main > .section:first-of-type > .default-content-wrapper > ul:first-child:has(a[href]) a {
+  font-size: 12px;
+  color: #000;
+  text-decoration: none;
+}
+
+main > .section:first-of-type > .default-content-wrapper > ul:first-child:has(a[href]) a:hover {
+  text-decoration: underline;
+}
+
+main > .section:first-of-type > .default-content-wrapper > ul:first-child:has(a[href]) strong {
+  font-weight: 400;
+  font-size: 12px;
+  color: #000;
+}
+
 /* section metadata */
 main .section.light,
 main .section.highlight {

@@ -1,0 +1,40 @@
+{
+  "variantName": "hero-campaign",
+  "baseBlock": "hero",
+  "version": "1.0.0",
+  "created": "2026-05-26T10:53:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://www.lg.com/ae/better-life/index",
+    "originPage": "Better Life campaign landing page",
+    "blockPosition": "top"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "dark",
+    "density": "spacious",
+    "purpose": "campaign-hero",
+    "imagePattern": "large",
+    "structure": "video background + heading + subtitle + CTA"
+  },
+  "contentPattern": {
+    "structure": "video background + heading + subheading + 1 CTA",
+    "buttonCount": 1,
+    "imageCount": 0
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "brand campaign landing pages",
+      "lifestyle campaign hero sections",
+      "video-based hero with text overlay"
+    ],
+    "notSuitableFor": [
+      "product detail pages",
+      "text-heavy info pages without media",
+      "minimal blog post heroes"
+    ]
+  },
+  "usage": {
+    "pagesUsing": ["/ae/better-life/index"],
+    "reuseCount": 1,
+    "lastUsed": "2026-05-26T10:53:00.000Z"
+  }
+}

@@ -5,7 +5,8 @@
  * Transformer: LG UAE section breaks.
  * Adds section breaks (<hr>) between content sections based on template definitions.
  * Selectors from captured DOM of lg.com/ae pages.
- * Sections: Article Header, Article Body, Related Articles, Featured Products.
+ * Templates: helpful-guide (4 sections), news-article (4 sections),
+ *            brand-page (7 sections), monitor-buying-guide (3 sections).
  */
 const TransformHook = { beforeTransform: 'beforeTransform', afterTransform: 'afterTransform' };
 
